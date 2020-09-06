@@ -1,0 +1,30 @@
+{
+  "name": "my-social-network-api",
+  "version": "1.0.0",
+  "description": "An API for a social network web application where users can share their thoughts, react to friends’ thoughts, and create a friend list.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/florhaidee/my-social-network-api.git"
+  },
+  "keywords": [
+    "NoSQL",
+    "MongoDB",
+    "mongoose"
+  ],
+  "author": "Florhaidee",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/florhaidee/my-social-network-api/issues"
+  },
+  "homepage": "https://github.com/florhaidee/my-social-network-api#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "moment": "^2.27.0",
+    "mongoose": "^5.10.3"
+  }
+}
