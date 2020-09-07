@@ -68,9 +68,46 @@ const userControler = {
                     res.status(404).json({ message: 'No User found with this id!' });
                     return;
                 }
-              res.json(dbPizzaData);
+              res.json(deletedUser);
             })
             .catch(err => res.json(err));
+    },
+
+    //add a new friend to a user's friend list
+    addFriend({ params }, res) {
+        User.findOneAndUpdate(
+            { _id: req.params.userId },
+            { $addToSet: {friends: params.friendId } },
+            { new: true, runValidators: true }
+        )
+        .then(dbUserdata => {
+            if (!dbUserdata) {
+                res.status(404).json({ message: 'No User was found with this id!' });
+                return;
+            }
+            res.json(dbUserdata);
+        })
+        .catch( err => {
+            console.log(err);
+            res.status(404).json(err)
+        })
+    },
+
+    //remove a friend from a user's friend list
+    removeFriend( { params }, res) {
+        User.findOneAndUpdate( 
+            { _id: params.userId },
+            { $pull: { friends: params.friendId } },
+            { new: true }
+        )
+        .then(dbUserdata => {
+        if (!dbUserdata) {
+            res.status(404).json({ message: 'No user was found with this id' });
+            return;
+        }
+        res.json(dbUserdata);
+        })
+        .catch(err => res.json(err))
     }
 };
 
